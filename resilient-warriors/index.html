@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Resilient Warriors - Technology-driven disaster education system for NDMA.">
+    <title>Resilient Warriors | Disaster Preparedness</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo" data-target="home" onclick="navigateTo('home')">
+                <i class="fa-solid fa-shield-halved"></i> Resilient Warriors
+            </a>
+            <div class="nav-links">
+                <a href="#" class="nav-btn active" data-target="home">Home</a>
+                <a href="#" class="nav-btn" data-target="dashboard">Dashboard</a>
+                <a href="#" class="nav-btn" data-target="ai-assistant">AI Guide</a>
+                <a href="#" class="nav-btn" data-target="training">Training</a>
+                <a href="#" class="nav-btn" data-target="tips">Tips</a>
+                <a href="#" class="nav-btn" data-target="resources">Resources</a>
+                <a href="#" class="nav-btn" data-target="about">About</a>
+            </div>
+            <button class="mobile-menu-btn" aria-label="Toggle Menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+        <!-- Home / Landing Page -->
+        <section id="home" class="page-section active">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <span class="badge hero-badge">Powered by NDMA</span>
+                    <h1 class="hero-title">Technology-Driven<br><span class="text-gradient">Disaster Resilience</span></h1>
+                    <p class="hero-subtitle">Training people using simulations, AI guidance, and localized safety information to build a safer tomorrow.</p>
+                    <div class="hero-actions">
+                        <button class="btn btn-danger btn-lg pulse-danger" onclick="toggleSOS()">
+                            <i class="fa-solid fa-triangle-exclamation"></i> I NEED HELP NOW
+                        </button>
+                        <button class="btn btn-primary btn-lg" onclick="navigateTo('dashboard')">
+                            Open Dashboard <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card glass-panel">
+                    <div class="feature-icon"><i class="fa-solid fa-robot"></i></div>
+                    <h3>AI Guidance</h3>
+                    <p>Get real-time, intelligent assistance during critical disaster situations.</p>
+                </div>
+                <div class="feature-card glass-panel">
+                    <div class="feature-icon"><i class="fa-solid fa-vr-cardboard"></i></div>
+                    <h3>Simulations</h3>
+                    <p>Immersive interactive modules to prepare for unexpected events.</p>
+                </div>
+                <div class="feature-card glass-panel">
+                    <div class="feature-icon"><i class="fa-solid fa-location-crosshairs"></i></div>
+                    <h3>Local Intel</h3>
+                    <p>Geo-specific alerts and customized preparedness guidelines.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Emergency Dashboard -->
+        <section id="dashboard" class="page-section hidden">
+            <div class="section-header">
+                <h2 class="section-title">Disaster Dashboard</h2>
+                <p class="section-desc">Real-time threat monitoring and alert system</p>
+            </div>
+            <div class="dashboard-grid">
+                <div class="status-card glass-panel threat-low">
+                    <div class="card-head">
+                        <div class="icon-box bg-blue"><i class="fa-solid fa-water"></i></div>
+                        <span class="status-badge safe">Safe</span>
+                    </div>
+                    <h3>Flood Monitoring</h3>
+                    <p>River levels stable at 2.4m. No flooding expected in your sector.</p>
+                </div>
+                <div class="status-card glass-panel threat-high">
+                    <div class="card-head">
+                        <div class="icon-box bg-orange"><i class="fa-solid fa-house-crack"></i></div>
+                        <span class="status-badge danger">Alert</span>
+                    </div>
+                    <h3>Earthquake</h3>
+                    <p>Magnitude 4.2 tremor detected 50km NW. Check structures and stay alert.</p>
+                    <button class="btn btn-sm btn-outline danger-outline mt-3" onclick="navigateTo('tips')">View Protocols</button>
+                </div>
+                <div class="status-card glass-panel threat-low">
+                    <div class="card-head">
+                        <div class="icon-box bg-red"><i class="fa-solid fa-fire"></i></div>
+                        <span class="status-badge safe">Safe</span>
+                    </div>
+                    <h3>Fire Risk</h3>
+                    <p>High humidity reducing wildfire spread probability. Burn ban lifted.</p>
+                </div>
+                <div class="status-card glass-panel threat-medium">
+                    <div class="card-head">
+                        <div class="icon-box bg-purple"><i class="fa-solid fa-jet-fighter-up"></i></div>
+                        <span class="status-badge warning">Monitor</span>
+                    </div>
+                    <h3>War / Conflict</h3>
+                    <p>Elevated regional tensions. Standard security protocols in effect.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI Assistant -->
+        <section id="ai-assistant" class="page-section hidden">
+            <div class="section-header">
+                <h2 class="section-title">AI Emergency Assistant</h2>
+                <p class="section-desc">Ask questions to receive instant survival protocols</p>
+            </div>
+            <div class="chat-wrapper glass-panel">
+                <div class="chat-header">
+                    <div class="chat-avatar"><i class="fa-solid fa-robot"></i></div>
+                    <div>
+                        <h3 class="m-0">ResQ-AI Guide</h3>
+                        <span class="online-status"><span class="dot"></span> Online</span>
+                    </div>
+                </div>
+                <div class="chat-history" id="chat-history">
+                    <div class="chat-bubble ai">
+                        Hi. I'm connected to the NDMA knowledge base. How can I help you prepare or respond today?
+                    </div>
+                </div>
+                <div class="chat-input-box">
+                    <input type="text" id="ai-input" placeholder="E.g., What should I do during an earthquake?">
+                    <button id="send-ai-btn" class="btn btn-primary"><i class="fa-solid fa-paper-plane"></i></button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Training Sandbox -->
+        <section id="training" class="page-section hidden">
+            <div class="section-header">
+                <h2 class="section-title">Simulation Training</h2>
+                <p class="section-desc">Interactive sandbox to build muscle memory for crises</p>
+            </div>
+            <div class="training-grid">
+                <div class="training-card glass-panel">
+                    <div class="training-image" style="background-image: url('https://images.unsplash.com/photo-1541888046425-d81bb19240f5?q=80&w=800&auto=format&fit=crop');">
+                        <div class="module-badge">Module 1</div>
+                    </div>
+                    <div class="training-details">
+                        <h3>Urban Evacuation</h3>
+                        <p>Learn to navigate a crumbling urban environment safely.</p>
+                        <div class="progress-track"><div class="progress-fill" style="width: 0%;"></div></div>
+                        <button class="btn btn-primary btn-full">Launch Simulation <i class="fa-solid fa-play"></i></button>
+                    </div>
+                </div>
+                <div class="training-card glass-panel">
+                    <div class="training-image" style="background-image: url('https://images.unsplash.com/photo-1518314916381-77a37c2a49ae?q=80&w=800&auto=format&fit=crop');">
+                        <div class="module-badge">Module 2</div>
+                    </div>
+                    <div class="training-details">
+                        <h3>First Responder Aid</h3>
+                        <p>Basic triage and traumatic injury response before help arrives.</p>
+                        <div class="progress-track"><div class="progress-fill" style="width: 100%;"></div></div>
+                        <button class="btn btn-outline btn-full">Review Scenario <i class="fa-solid fa-rotate-left"></i></button>
+                    </div>
+                </div>
+                <div class="training-card glass-panel">
+                    <div class="training-image" style="background-image: url('https://images.unsplash.com/photo-1547683905-f686c993aae5?q=80&w=800&auto=format&fit=crop');">
+                        <div class="module-badge">Module 3</div>
+                    </div>
+                    <div class="training-details">
+                        <h3>Flood Response</h3>
+                        <p>Securing property and safe water navigation protocols.</p>
+                        <div class="progress-track"><div class="progress-fill" style="width: 45%;"></div></div>
+                        <button class="btn btn-primary btn-full">Resume Simulation <i class="fa-solid fa-play"></i></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tips List -->
+        <section id="tips" class="page-section hidden">
+            <div class="section-header">
+                <h2 class="section-title">Localized Preparedness Tips</h2>
+                <p class="section-desc">Tailored advice for your registered region</p>
+            </div>
+            <div class="tips-container">
+                <div class="tip-item glass-panel">
+                    <div class="tip-icon"><i class="fa-solid fa-suitcase-medical"></i></div>
+                    <div class="tip-content">
+                        <h4>72-Hour Survival Kit</h4>
+                        <p>Ensure you have 1 gallon of water per person per day, non-perishable foods, flashlights, and extra batteries. Rotate stock every 6 months.</p>
+                    </div>
+                </div>
+                <div class="tip-item glass-panel">
+                    <div class="tip-icon"><i class="fa-solid fa-route"></i></div>
+                    <div class="tip-content">
+                        <h4>Family Communication Plan</h4>
+                        <p>Designate an out-of-state contact person. Local networks may crash, but long-distance lines often remain open.</p>
+                    </div>
+                </div>
+                <div class="tip-item glass-panel">
+                    <div class="tip-icon"><i class="fa-solid fa-house-circle-check"></i></div>
+                    <div class="tip-content">
+                        <h4>Home Hardening</h4>
+                        <p>Secure heavy furniture to walls. Know how and when to shut off utilities (gas, electricity, water) safely.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Resources -->
+        <section id="resources" class="page-section hidden">
+            <div class="section-header">
+                <h2 class="section-title">Resource Monitoring</h2>
+                <p class="section-desc">Live tracking of essential regional supplies</p>
+            </div>
+            <div class="resource-grid">
+                <div class="resource-card glass-panel">
+                    <div class="radial-progress" style="--val: 85;">
+                        <svg width="120" height="120">
+                            <circle class="bg" cx="60" cy="60" r="50"></circle>
+                            <circle class="prog" cx="60" cy="60" r="50"></circle>
+                        </svg>
+                        <div class="radial-text">85%</div>
+                    </div>
+                    <h3>Water Reserves</h3>
+                    <p class="resource-status ok">Optimal</p>
+                </div>
+                <div class="resource-card glass-panel">
+                    <div class="radial-progress warning-circle" style="--val: 38;">
+                        <svg width="120" height="120">
+                            <circle class="bg" cx="60" cy="60" r="50"></circle>
+                            <circle class="prog" cx="60" cy="60" r="50"></circle>
+                        </svg>
+                        <div class="radial-text">38%</div>
+                    </div>
+                    <h3>Medical Supplies</h3>
+                    <p class="resource-status warning">Restock Needed</p>
+                </div>
+                <div class="resource-card glass-panel">
+                    <div class="radial-progress danger-circle" style="--val: 15;">
+                        <svg width="120" height="120">
+                            <circle class="bg" cx="60" cy="60" r="50"></circle>
+                            <circle class="prog" cx="60" cy="60" r="50"></circle>
+                        </svg>
+                        <div class="radial-text">15%</div>
+                    </div>
+                    <h3>Emergency Shelter Space</h3>
+                    <p class="resource-status danger">Critical</p>
+                </div>
+                <div class="resource-card glass-panel">
+                    <div class="radial-progress" style="--val: 92;">
+                        <svg width="120" height="120">
+                            <circle class="bg" cx="60" cy="60" r="50"></circle>
+                            <circle class="prog" cx="60" cy="60" r="50"></circle>
+                        </svg>
+                        <div class="radial-text">92%</div>
+                    </div>
+                    <h3>Food Rations</h3>
+                    <p class="resource-status ok">Optimal</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- About -->
+        <section id="about" class="page-section hidden">
+            <div class="section-header">
+                <h2 class="section-title">About the Platform</h2>
+                <p class="section-desc">Building resilient communities</p>
+            </div>
+            <div class="about-card glass-panel">
+                <div class="about-flex">
+                    <div class="about-text">
+                        <h3>Mission Statement</h3>
+                        <p>In partnership with NDMA, Resilient Warriors leverages technology to bridge the gap between disaster management agencies and the public. We provide proactive, intuitive tools to ensure people are not merely victims, but capable first responders in their communities.</p>
+                        
+                        <h3 class="mt-4">Technical Stack</h3>
+                        <div class="pills">
+                            <span class="pill">Next-Gen UI</span>
+                            <span class="pill">Vanilla JS</span>
+                            <span class="pill">CSS Variables</span>
+                            <span class="pill">AI Integration Ready</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 Resilient Warriors | NDMA Prototype</p>
+    </footer>
+
+    <!-- Floating SOS Button -->
+    <button class="floating-sos" onclick="toggleSOS()">
+        <span>SOS</span>
+    </button>
+
+    <!-- Emergency Modal -->
+    <div class="modal-overlay" id="sos-modal">
+        <div class="modal-content glass-panel danger-theme">
+            <div class="modal-header border-b danger-border">
+                <h2 class="text-danger m-0"><i class="fa-solid fa-triangle-exclamation"></i> EMERGENCY SOS</h2>
+                <button class="close-btn" onclick="toggleSOS()"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body">
+                <p class="urgency-text">If your life is in immediate danger, try to call local emergency services directly.</p>
+                
+                <div class="sos-actions">
+                    <button class="btn btn-full btn-danger mb-2" onclick="shareLocation()">
+                        <i class="fa-solid fa-location-crosshairs"></i> Broadcast My Location
+                    </button>
+                    <div id="location-status" class="location-status hidden">Acquiring GPS coordinates...</div>
+
+                    <div class="quick-contacts mt-3">
+                        <a href="tel:112" class="btn btn-full btn-outline light-outline mb-2">
+                            <i class="fa-solid fa-phone"></i> Call Emergency (112)
+                        </a>
+                        <a href="sms:112?body=I%20need%20help.%20My%20coordinates%20are:%20" class="btn btn-full btn-outline light-outline">
+                            <i class="fa-solid fa-comment-sms"></i> Text Emergency Info
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="quick-tips mt-4">
+                    <h4 class="mb-2">Immediate Survival Steps:</h4>
+                    <ul class="survival-list">
+                        <li><strong>Earthquake:</strong> Drop, Cover, and Hold On.</li>
+                        <li><strong>Fire:</strong> Stay low to the ground. Check doors with the back of your hand before opening.</li>
+                        <li><strong>Bleeding:</strong> Apply firm, direct pressure to the wound with a clean cloth.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
