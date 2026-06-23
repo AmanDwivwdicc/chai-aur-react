@@ -85,7 +85,7 @@ function App() {
           />
 
           <h1 className="text-4xl font-bold text-pink-600 mt-5">
-            Yaaay Your Aman Loves U TOO ❤️🥰
+            Yaaay Your Boy Loves U TOO ❤️🥰
           </h1>
         </div>
       )}
